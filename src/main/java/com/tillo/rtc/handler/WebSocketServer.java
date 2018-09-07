@@ -187,8 +187,9 @@ public class WebSocketServer {
         boolean bool=true;
         if (clientMap.size()>0&&clientMap.get(room_id).getSessionMap()!=null&&clientMap.get(room_id).getSessionMap().size()>=2){
             bool=false;
-        }else
-            clientMap.get(room_id).setSession(client_id,this.session);
+        }else {
+            clientMap.get(room_id).setSession(client_id, this.session);
+        }
         System.out.println("sessionMap:"+clientMap.get(room_id).getSessionMap().values()+""+clientMap.get(room_id).getSessionMap().size());
         return bool;
     }

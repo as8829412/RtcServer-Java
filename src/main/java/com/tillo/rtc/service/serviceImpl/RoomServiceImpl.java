@@ -118,18 +118,22 @@ public class RoomServiceImpl  implements RoomService {
                     retries = retries + 1;
                     System.out.println("clientmessage:"+client.getMessage());
                 }
-            }else
-                error= "UNKNOWN_CLIENT";
-        }else
-            error="UNKNOWN_ROOM";
-        if (error!="")
-            return "{\"result\":\""+error+"\"}";
+            }else {
+                error = "UNKNOWN_CLIENT";
+            }
+        }else {
+            error = "UNKNOWN_ROOM";
+        }
+        if (error!="") {
+            return "{\"result\":\"" + error + "\"}";
+        }
         else {
             if (!saved){
                // send_message_to_websocket(room_id,client_id,msg);
                 return "{\"result\":\"SUCCESS\"}";
-            }else
+            }else {
                 return "{\"result\":\"SUCCESS\"}";
+            }
         }
     }
     private void send_message_to_websocket(String room_id,String client_id,String message){
@@ -147,15 +151,17 @@ public class RoomServiceImpl  implements RoomService {
                 if (clientMap.get(room_id).getClientIds().containsKey(client_id)) {
                     clientMap.get(room_id).getClientIds().remove(client_id);
                     clientMap.get(room_id).getSessionMap().remove(client_id);
-                }else
-                    error= "UNKNOWN_CLIENT";
+                }else {
+                    error = "UNKNOWN_CLIENT";
+                }
                 if (clientMap.get(room_id).getClientIds().size()>0){
                     clientMap.get(room_id).getClientIds().get(getOtherClient(room_id,client_id)).setInitiator(true);
                 }else {
                     clientMap.remove(room_id);
                 }
-            }else
-                error="UNKNOWN_ROOM";
+            }else {
+                error = "UNKNOWN_ROOM";
+            }
         }
         if (error!=""){
             return "{\"result\":\""+error+"\"}";
@@ -199,10 +205,12 @@ public class RoomServiceImpl  implements RoomService {
         config.add("iceServers",array);
         config.addProperty("bundlePolicy","max-bundle");
         config.addProperty("rtcpMuxPolicy","require");
-        if (ice_server_override!=""&&ice_server_override!=null)
-            config.addProperty("iceServers",ice_server_override);
-        if (ice_transports!=""&&ice_transports!=null)
-            config.addProperty("ice_transports",ice_transports);
+        if (ice_server_override!=""&&ice_server_override!=null) {
+            config.addProperty("iceServers", ice_server_override);
+        }
+        if (ice_transports!=""&&ice_transports!=null) {
+            config.addProperty("ice_transports", ice_transports);
+        }
         return config;
     }
     /*private String make_pc_constraints(String dtls,String dscp,String ipv6){
