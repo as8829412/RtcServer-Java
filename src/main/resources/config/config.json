@@ -1,0 +1,45 @@
+{
+  "http.port": 8080,
+  "scan.package":"com.tech.tanyu.handle",
+  "webrtc.config": {
+ "wssUrl": "ws://127.0.0.1:8089",
+    "initiator": false,
+    "roomId": null,
+    "roomServer": "http://127.0.0.1:8080",
+    "joinRoomUrl": null,
+    "iceServerUrl": "http://127.0.0.1:8080/iceconfig?key=none",
+    "constraints": {
+      "video": {"mandatory": {"minWidth": "1280", "minHeight": "1080"}, "optional": [{"minWidth": "1280"}, {"minHeight": "1080"}]},
+      "audio": true
+    },
+    "offerOptions":{
+			"offerToReceiveAudio": 1,
+			"offerToReceiveVideo": 1,
+			"voiceActivityDetection": true
+	},
+    "certParams": { "name": "ECDSA", "namedCurve": "P-256" },
+    "peerConnectionConfig": {
+      "iceServers": [],
+      "bundlePolicy": "max-bundle",
+      "rtcpMuxPolicy": "require",
+      "certificates": null
+    },
+    "peerConnectionConstraints": { "optional": [] },
+    "mediaCodec": {
+      "audioSendBitrate": "16000",
+      "audioSendCodec": "ISAC/16000",
+      "audioRecvBitrate": "48000",
+      "audioRecvCodec": "opus/48000",
+      "opusMaxPbr": "8000",
+      "opusFec": false,
+      "opusDtx": true,
+      "opusStereo": true,
+      "videoSendBitrate": "1000",
+      "videoSendInitialBitrate": "",
+      "videoSendCodec": "VP9",
+      "videoRecvBitrate": "8000",
+      "videoRecvCodec": "VP9",
+      "videoFec": false
+    }
+  }
+}
